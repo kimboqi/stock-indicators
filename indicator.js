@@ -54,4 +54,6 @@ var Indicator = (function(){
   };
 })();
 
-module.exports = Indicator;
+if (module) {
+  module.exports = Indicator;
+}
