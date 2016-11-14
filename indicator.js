@@ -2,10 +2,10 @@ var Indicator = (function(){
   /**
    * 计算obv指标
    *
-   * @method obv
-   * @param {Array[Array[Number, Number]]} ticks
+   * @method OBV
+   * @param {Array} ticks
    * ticks为二维数组类型，其中内层数组第一个值为收盘价，第二个值为成交量
-   * @return {Array[number]} obvs
+   * @return {Array} obvs
    */
   var obv = function (ticks) {
     var lastTick, obvs = [], length = ticks.length;
@@ -37,8 +37,8 @@ var Indicator = (function(){
    *
    * 计算macd指标,快速和慢速移动平均线的周期分别取12和26
    *
-   * @method macd
-   * @param {Array[Number]} ticks
+   * @method MACD
+   * @param {Array} ticks
    * 一维数组类型，每个元素为tick的收盘价格
    * @return {Object} 返回一个包含diffs deas bars属性的对象,每个属性对应的类型为{Array[Number]}
    */
@@ -81,8 +81,8 @@ var Indicator = (function(){
    *
    * 计算kdj指标,rsv的周期为9日
    *
-   * @method kdj
-   * @param {Array[Array[Number, Number, Number]]} ticks
+   * @method KDJ
+   * @param {Array} ticks
    * 二维数组类型，其中内层数组包含三个元素值，第一个值表示当前Tick的最高价格，第二个表示当前Tick的最低价格，第三个表示当前Tick的收盘价格
    * @return {Object} 返回一个包含k d j属性的对象,每个属性对应的类型为{Array[Number]}
    */
@@ -125,8 +125,8 @@ var Indicator = (function(){
    *
    * 计算boll指标,ma的周期为20日
    *
-   * @method boll
-   * @param {Array[Number]} ticks
+   * @method BOLL
+   * @param {Array} ticks
    * 一维数组类型，每个元素为当前Tick的收盘价格
    * @return {Object} 返回一个包含upper mid lower属性的对象,每个属性对应的类型为{Array[Number]}
    */
@@ -160,8 +160,8 @@ var Indicator = (function(){
    *
    * 计算rsi指标,分别返回以6日，12日，24日为参考基期的RSI值
    *
-   * @method rsi
-   * @param {Array[Number]} ticks
+   * @method RSI
+   * @param {Array} ticks
    * 一维数组类型，每个元素为当前Tick的收盘价格
    * @return {Object} 返回一个包含rsi6 rsi12 rsi24属性的对象,每个属性对应的类型为{Array[Number]}
    */
