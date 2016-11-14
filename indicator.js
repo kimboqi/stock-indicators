@@ -130,7 +130,6 @@ var Indicator = (function(){
    * 一维数组类型，每个元素为当前Tick的收盘价格
    * @return {Object} 返回一个包含upper mid lower属性的对象,每个属性对应的类型为{Array[Number]}
    */
-
   var boll = function(ticks) {
     //移动平均线周期为20
     var maDays = 20, tickBegin = maDays - 1, maSum = 0, p = 0;
@@ -156,7 +155,38 @@ var Indicator = (function(){
     }
     return {"upper": ups, "mid": mas, "lower": lows};
   };
-  return {"OBV": obv, "MACD": macd, "KDJ": kdj, "BOLL": boll};
+
+  /**
+   *
+   * 计算rsi指标,分别返回以6日，12日，24日为参考基期的RSI值
+   *
+   * @method rsi
+   * @param {Array[Number]} ticks
+   * 一维数组类型，每个元素为当前Tick的收盘价格
+   * @return {Object} 返回一个包含rsi6 rsi12 rsi24属性的对象,每个属性对应的类型为{Array[Number]}
+   */
+  var rsi = function(ticks) {
+    var lastClosePx = ticks[0];
+    var days = [6, 12, 24], result = {};
+    for (var i = 0 ; i < ticks.length; i ++) {
+      var c = ticks[i];
+      var m = Math.max(c-lastClosePx, 0), a = Math.abs(c-lastClosePx);
+      for (var di = 0; di < days.length; di++) {
+        var d = days[di];
+        if (!result.hasOwnProperty("rsi"+d)) {
+          result["lastSm"+d] = result["lastSa"+d]  = 0;
+          result["rsi"+d] = [0];
+        } else {
+          result["lastSm"+d] = (m + (d - 1) * result["lastSm"+d]) / d;
+          result["lastSa"+d] = (a + (d - 1) * result["lastSa"+d]) / d;
+          result["rsi"+d].push(result["lastSm"+d] / result["lastSa"+d] * 100);
+        }
+      }
+      lastClosePx = c;
+    }
+    return {"rsi6": result["rsi6"], "rsi12": result["rsi12"], "rsi24": result["rsi24"]};
+  };
+  return {"OBV": obv, "MACD": macd, "KDJ": kdj, "BOLL": boll, "RSI": rsi};
 })();
 
 if (module) {
