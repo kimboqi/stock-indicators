@@ -148,9 +148,10 @@ var Indicator = (function(){
         ups.push(ma + 2 * md);
         lows.push(ma - 2 * md);
       } else {
-        ups.push(null);
-        mas.push(null);
-        lows.push(null);
+        //ugly constant, just keep the same type for client
+        ups.push(-1);
+        mas.push(-1);
+        lows.push(-1);
       }
     }
     return {"upper": ups, "mid": mas, "lower": lows};
