@@ -120,11 +120,33 @@ var Indicator = (function(){
     }
     return {"k": ks, "d": ds, "j": js};
   };
-  return {
-    "OBV": obv,
-    "MACD": macd,
-    "KDJ": kdj
+
+  var boll = function(ticks) {
+    //移动平均线周期为20
+    var maDays = 20, tickBegin = maDays - 1, maSum = 0, p = 0;
+    var ups = [], mas = [], lows = [];
+    for (var i = 0; i < ticks.length; i ++) {
+      var c = ticks[i], ma, md, bstart, mdSum;
+      maSum += c;
+      if (i >= tickBegin) {
+        maSum = maSum - p;
+        ma = maSum / maDays;
+        mas.push(ma);
+        bstart = i - tickBegin;
+        p = ticks[bstart];
+        mdSum = ticks.slice(bstart, bstart+maDays).reduce(function(a, b) {return a + Math.pow(b-ma, 2);}, 0);
+        md = Math.sqrt(mdSum/maDays);
+        ups.push(ma + 2 * md);
+        lows.push(ma - 2 * md);
+      } else {
+        ups.push(null);
+        mas.push(null);
+        lows.push(null);
+      }
+    }
+    return {"upper": ups, "mid": mas, "lower": lows};
   };
+  return {"OBV": obv, "MACD": macd, "KDJ": kdj, "BOLL": boll};
 })();
 
 if (module) {
