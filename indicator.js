@@ -180,7 +180,11 @@ var Indicator = (function(){
         } else {
           result["lastSm"+d] = (m + (d - 1) * result["lastSm"+d]) / d;
           result["lastSa"+d] = (a + (d - 1) * result["lastSa"+d]) / d;
-          result["rsi"+d].push(result["lastSm"+d] / result["lastSa"+d] * 100);
+          if (result["lastSa"+d] != 0) {
+            result["rsi"+d].push(result["lastSm"+d] / result["lastSa"+d] * 100);
+          } else {
+            result["rsi"+d].push(0);
+          }
         }
       }
       lastClosePx = c;

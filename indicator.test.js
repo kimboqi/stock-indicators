@@ -14,13 +14,13 @@ var Indicator = require('./indicator.js');
 //   console.log(Indicator.KDJ(testArray));
 // });
 
-testArray = [9.03, 9.93, 10.92, 12.01, 11.46, 12.19, 12.68, 12.39, 13.53, 14.36, 14.26, 13.71, 13.66, 13.24, 13.03, 13.14, 12.68, 12.37, 12.12, 12.18, 12.2, 12.38, 12.01, 11.81, 11.59];
-describe('boll test', function(){
-  console.log(Indicator.BOLL(testArray));
-});
-
-
-// testArray = [9.03, 9.93, 10.92, 12.01, 11.46, 12.19, 12.68];
-// describe('rsi test', function(){
-//   console.log(Indicator.RSI(testArray));
+// testArray = [9.03, 9.93, 10.92, 12.01, 11.46, 12.19, 12.68, 12.39, 13.53, 14.36, 14.26, 13.71, 13.66, 13.24, 13.03, 13.14, 12.68, 12.37, 12.12, 12.18, 12.2, 12.38, 12.01, 11.81, 11.59];
+// describe('boll test', function(){
+//   console.log(Indicator.BOLL(testArray));
 // });
+
+
+testArray = [9.03, 9.03, 10.92, 12.01, 11.46, 12.19, 12.68];
+describe('rsi test', function(){
+  console.log(Indicator.RSI(testArray));
+});
