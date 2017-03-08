@@ -10,6 +10,9 @@
 <dt><a href="#KDJ">KDJ(ticks)</a> ⇒ <code>Object</code></dt>
 <dd><p>计算kdj指标,rsv的周期为9日</p>
 </dd>
+<dt><a href="#MA">MA(ticks, Number)</a> ⇒ <code>Array</code></dt>
+<dd><p>计算移动平均线指标, ma的周期为days</p>
+</dd>
 <dt><a href="#BOLL">BOLL(ticks)</a> ⇒ <code>Object</code></dt>
 <dd><p>计算boll指标,ma的周期为20日</p>
 </dd>
@@ -53,6 +56,19 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | ticks | <code>Array</code> | 二维数组类型，其中内层数组包含三个元素值，第一个值表示当前Tick的最高价格，第二个表示当前Tick的最低价格，第三个表示当前Tick的收盘价格 |
+
+<a name="MA"></a>
+
+## MA(ticks, Number) ⇒ <code>Array</code>
+计算移动平均线指标, ma的周期为days
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - mas  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| ticks | <code>Array</code> |  |
+| Number |  | days 一维数组类型，每个元素为当前Tick的收盘价格 |
 
 <a name="BOLL"></a>
 
