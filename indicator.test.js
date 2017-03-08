@@ -20,7 +20,12 @@ var Indicator = require('./indicator.js');
 // });
 
 
+// testArray = [9.03, 9.03, 10.92, 12.01, 11.46, 12.19, 12.68];
+// describe('rsi test', function(){
+//   console.log(Indicator.RSI(testArray));
+// });
+
 testArray = [9.03, 9.03, 10.92, 12.01, 11.46, 12.19, 12.68];
-describe('rsi test', function(){
-  console.log(Indicator.RSI(testArray));
+describe('ma test', function(){
+  console.log(Indicator.MA(testArray, 20));
 });

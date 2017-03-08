@@ -121,6 +121,27 @@ var Indicator = (function(){
     return {"k": ks, "d": ds, "j": js};
   };
 
+   /**
+   *
+   * 计算移动平均线指标, ma的周期为days
+   *
+   * @method MA
+   * @param {Array} ticks
+   * @param Number days
+   * 一维数组类型，每个元素为当前Tick的收盘价格
+   * @return {Array} mas
+   */
+  var ma = function(ticks, days) {
+    var maSum = 0, p = 0;
+    var mas = [];
+    for (var i = 0; i < ticks.length; i++) {
+      maSum += ticks[i];
+      ma = maSum / days;
+      mas.push(ma);
+    }
+    return mas;
+  };
+
   /**
    *
    * 计算boll指标,ma的周期为20日
@@ -191,7 +212,7 @@ var Indicator = (function(){
     }
     return {"rsi6": result["rsi6"], "rsi12": result["rsi12"], "rsi24": result["rsi24"]};
   };
-  return {"OBV": obv, "MACD": macd, "KDJ": kdj, "BOLL": boll, "RSI": rsi};
+  return {"OBV": obv, "MACD": macd, "KDJ": kdj, "BOLL": boll, "RSI": rsi, "MA": ma};
 })();
 
 if (module) {
